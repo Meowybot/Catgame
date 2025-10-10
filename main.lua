@@ -16,5 +16,9 @@ end
 
 --custom functions:
 
-function addScore()
+function addhp(hp, maxhp)
+    catgame.game.hp = catgame.game.hp + hp
+    if catgame.game.hp > maxhp then
+        catgame.game.hp = maxhp
+    end
 end
