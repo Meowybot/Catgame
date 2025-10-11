@@ -1,6 +1,7 @@
 function love.load()
     state = require("lib/stateswitcher")
-    state.switch("states/loadvars")
+    catsing = require("loadvars")
+    state.switch("states/mainmenu")
 end
 
 function love.update(dt)
