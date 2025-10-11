@@ -5,7 +5,6 @@ catsing.level.miss = 0
 catsing.level.loaded = "level01"
 
 function catsing.level:load(name)
-    catsing.level.loaded = name
-    state.switch("assets/levels/" .. name .. "/chart")
-    --todo add other stuff
+    catsing.level.loaded = name or "level00"
+    state.switch("assets/levels/" .. catsing.level.loaded .. "/chart")
 end
