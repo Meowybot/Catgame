@@ -1,4 +1,4 @@
-CATGAME
+CatSing!
 
 this is a rhythm game about cats that are singing.
 
