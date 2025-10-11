@@ -22,3 +22,6 @@ function addhp(hp, maxhp)
         catgame.game.hp = maxhp
     end
 end
+
+function ongameclick(x, y)
+end
