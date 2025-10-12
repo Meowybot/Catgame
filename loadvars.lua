@@ -47,7 +47,7 @@ end
 function catsing.level.lightnote(number, color)
     if catsing.level.lastnotehit then
         catsing.level.hp = catsing.level.hp + 1
-        if color == not "white" then
+        if color ~= "white" then
             catsing.level.lastnotehit = true
         else
             catsing.level.lastnotehit = false
