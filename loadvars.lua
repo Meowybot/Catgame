@@ -9,8 +9,13 @@ catsing.level.spb = 4
 catsing.level.secps = catsing.level.bpsec / catsing.level.spb
 catsing.level.beatcounter = 0
 catsing.level.counter = 0
+catsing.settings = {}
+catsing.settings.language = "en"
+catsing.settings.controls = {}
+catsing.settings.controls[1] = "q"
+catsing.settings.controls[2] = "p"
 
-function catsing.level:load(name)
+function catsing.level.load(name)
     catsing.level.loaded = name or "level00"
     state.switch("assets/levels/" .. catsing.level.loaded .. "/chart")
 end
@@ -26,9 +31,30 @@ end
 function catsing.level.setsteps(dt)
     catsing.level.counter = catsing.level.counter + dt
     if catsing.level.counter >= catsing.level.secps then
-        catsing.level.counter = 0
+        catsing.level.counter = catsing.level.counter - catsing.level.secps
         catsing.level.beatcounter = catsing.level.beatcounter + 1
         catsing.level.onstep(catsing.level.beatcounter)
-        --probably doesnt work on some devices
+        -- Timer accuracy may vary on devices with inconsistent frame rates or low performance
     end
+end
+
+function catsing.level.getsteps()
+    return catsing.level.beatcounter
+end
+
+function catsing.settings.setlang(lang)
+    catsing.settings.language = lang or "en"
+end
+
+function catsing.settings.setcontrol(first, second)
+    catsing.settings.controls[1] = first or "q"
+    catsing.settings.controls[2] = second or "p"
+end
+
+function catsing.settings.getlang()
+    return catsing.settings.language
+end
+
+function catsing.settings.getcontrol()
+    return catsing.settings.controls
 end
