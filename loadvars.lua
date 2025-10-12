@@ -9,6 +9,8 @@ catsing.level.spb = 4
 catsing.level.secps = catsing.level.bpsec / catsing.level.spb
 catsing.level.beatcounter = 0
 catsing.level.counter = 0
+catsing.level.notecolor = "white"
+catsing.level.lastnotehit = true
 catsing.settings = {}
 catsing.settings.language = "en"
 catsing.settings.controls = {}
@@ -42,6 +44,20 @@ function catsing.level.getsteps()
     return catsing.level.beatcounter
 end
 
+function catsing.level.lightnote(number, color)
+    if catsing.level.lastnotehit then
+        catsing.level.hp = catsing.level.hp + 1
+        if color == not "white" then
+            catsing.level.lastnotehit = true
+        else
+            catsing.level.lastnotehit = false
+        end
+    else
+        catsing.level.hp = catsing.level.hp - 1
+        catsing.level.miss = catsing.level.miss + 1
+    end
+end
+
 function catsing.settings.setlang(lang)
     catsing.settings.language = lang or "en"
 end
@@ -55,6 +71,8 @@ function catsing.settings.getlang()
     return catsing.settings.language
 end
 
-function catsing.settings.getcontrol()
-    return catsing.settings.controls
+function catsing.settings.getcontrol(num)
+    return catsing.settings.controls[num]
 end
+
+return catsing
