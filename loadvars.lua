@@ -11,11 +11,6 @@ catsing.level.beatcounter = 0
 catsing.level.counter = 0
 catsing.level.notecolor = "white"
 catsing.level.lastnotehit = true
-catsing.settings = {}
-catsing.settings.language = "en"
-catsing.settings.controls = {}
-catsing.settings.controls[1] = "q"
-catsing.settings.controls[2] = "p"
 
 function catsing.level.load(name)
     catsing.level.loaded = name or "level00"
@@ -59,23 +54,6 @@ function catsing.level.lightnote(number, color)
         catsing.level.hp = catsing.level.hp - 1
         catsing.level.miss = catsing.level.miss + 1
     end
-end
-
-function catsing.settings.setlang(lang)
-    catsing.settings.language = lang or "en"
-end
-
-function catsing.settings.setcontrol(first, second)
-    catsing.settings.controls[1] = first or "q"
-    catsing.settings.controls[2] = second or "p"
-end
-
-function catsing.settings.getlang()
-    return catsing.settings.language
-end
-
-function catsing.settings.getcontrol(num)
-    return catsing.settings.controls[num]
 end
 
 return catsing
