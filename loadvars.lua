@@ -32,7 +32,7 @@ end
 
 function catsing.level.setsteps(dt)
     catsing.level.counter = catsing.level.counter + dt
-    if catsing.level.counter >= catsing.level.secps then
+    while catsing.level.counter >= catsing.level.secps do
         catsing.level.counter = catsing.level.counter - catsing.level.secps
         catsing.level.beatcounter = catsing.level.beatcounter + 1
         catsing.level.onstep(catsing.level.beatcounter)
