@@ -11,10 +11,12 @@ catsing.level.beatcounter = 0
 catsing.level.counter = 0
 catsing.level.notecolor = "white"
 catsing.level.lastnotehit = true
+--initial variables for levels
 
 function catsing.level.load(name)
     catsing.level.loaded = name or "level00"
     state.switch("assets/levels/" .. catsing.level.loaded .. "/chart")
+    --loads chart.lua from level folder
 end
 
 function catsing.level.onstep(step)
@@ -31,12 +33,13 @@ function catsing.level.setsteps(dt)
         catsing.level.counter = catsing.level.counter - catsing.level.secps
         catsing.level.beatcounter = catsing.level.beatcounter + 1
         catsing.level.onstep(catsing.level.beatcounter)
-        -- Timer accuracy may vary on devices with inconsistent frame rates or low performance
+        -- lag spikes could cause game over on songs with notes close to the start
     end
 end
 
 function catsing.level.getsteps()
     return catsing.level.beatcounter
+    --returns the current step
 end
 
 function catsing.level.lightnote(number, color)
@@ -54,6 +57,8 @@ function catsing.level.lightnote(number, color)
         catsing.level.hp = catsing.level.hp - 1
         catsing.level.miss = catsing.level.miss + 1
     end
+    --TODO: add and call functions for actually lighting notes and adding anims and sound
 end
 
 return catsing
+--returns table

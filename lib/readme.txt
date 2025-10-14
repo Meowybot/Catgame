@@ -1,2 +1,1 @@
-aquí van las librerías 
-here go the libraries 
+libraries / librerias
