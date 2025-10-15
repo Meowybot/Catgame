@@ -9,8 +9,10 @@ catsing.level.spb = 4
 catsing.level.secps = catsing.level.bpsec / catsing.level.spb
 catsing.level.beatcounter = 0
 catsing.level.counter = 0
-catsing.level.notecolor = "white"
-catsing.level.lastnotehit = true
+catsing.level.notecolor = {}
+catsing.level.notecolor[1] = "white"
+catsing.level.lastnotehit = {}
+catsing.level.lastnotehit[1] = true
 --initial variables for levels
 
 function catsing.level.load(name)
@@ -43,16 +45,16 @@ function catsing.level.getsteps()
 end
 
 function catsing.level.lightnote(number, color)
-    if catsing.level.lastnotehit then
+    if catsing.level.lastnotehit[number] then
         catsing.level.hp = catsing.level.hp + 1
         if color ~= "white" then
-            catsing.level.lastnotehit = true
+            catsing.level.lastnotehit[number] = true
         else
-            catsing.level.lastnotehit = false
+            catsing.level.lastnotehit[number] = false
         end
     else
         if color ~= "white" then
-            catsing.level.lastnotehit = true
+            catsing.level.lastnotehit[number] = true
         end
         catsing.level.hp = catsing.level.hp - 1
         catsing.level.miss = catsing.level.miss + 1
