@@ -2,7 +2,7 @@ function love.load()
     state = require("lib/stateswitcher")
     catsing = require("loadvars")
     state.switch("states/mainmenu")
-    --switches to mm
+    --switches to mm state
 end
 
 function love.update(dt)
