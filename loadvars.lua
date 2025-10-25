@@ -14,6 +14,7 @@ catsing.level.notecolor = {}
 catsing.level.notecolor[1] = "white"
 catsing.level.lastnotehit = {}
 catsing.level.lastnotehit[1] = true
+catsing.objectfuncs = {}
 catsing.objects = {}
 catsing.objects.bg = {}
 catsing.objects.bg.image = love.graphics.newImage('assets/img/placeholder.png')
@@ -65,6 +66,13 @@ function catsing.level.lightnote(number, color)
         catsing.level.miss = catsing.level.miss + 1
     end
     --TODO: add and call functions for actually lighting notes and adding anims and sound
+end
+
+function catsing.createobj(name, image)
+    local createdobj = {}
+    
+    setmetatable(createdobj, catsing.objectfuncs)
+    catsing.objects[name] = createdobj
 end
 
 return catsing
