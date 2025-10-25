@@ -14,6 +14,9 @@ catsing.level.notecolor = {}
 catsing.level.notecolor[1] = "white"
 catsing.level.lastnotehit = {}
 catsing.level.lastnotehit[1] = true
+catsing.objects = {}
+catsing.objects.bg = {}
+catsing.objects.bg.image = love.graphics.newImage('assets/img/placeholder.png')
 --initial variables for levels
 
 function catsing.level.load(name)
@@ -46,6 +49,7 @@ function catsing.level.getsteps()
 end
 
 function catsing.level.lightnote(number, color)
+    catsing.level.notecolor[number] = color
     if catsing.level.lastnotehit[number] then
         catsing.level.hp = catsing.level.hp + 1
         if color ~= "white" then
