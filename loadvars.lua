@@ -68,11 +68,51 @@ function catsing.level.lightnote(number, color)
     --TODO: add and call functions for actually lighting notes and adding anims and sound
 end
 
-function catsing.createobj(name, image)
-    local createdobj = {}
+function catsing.createobj(name, imagename, xpos, ypos, scalex, scaley, visible)
+    local createdobj = {
+        image = love.graphics.newImage(image) or love.graphics.newImage('assets/img/placeholder.png'),
+        x = xpos or 0
+        y = ypos or 0
+        scaleX = scalex or 1
+        scaleY = scaley or 1
+        visible = visible or true
+        anims = {}
+        idleanim = nil
+        currentanim = nil
+        singanim = nil
+        missanim = nil
+    }
     
     setmetatable(createdobj, catsing.objectfuncs)
     catsing.objects[name] = createdobj
+end
+
+function catsing.objectfuncs:draw()
+    if self.visible == true then
+        love.graphics.draw(self.image, self.x, self.y, 0, self.scaleX, self.scaleY)
+    end
+end
+
+function catsing.objectfuncs:setPosition(xpos, ypos)
+    self.x = xpos
+    self.y = ypos
+end
+
+function catsing.objectfuncs:setScale(scalex, scaley)
+    self.scaleX = scalex
+    self.scaleY = scaley
+end
+
+function catsing.objectfuncs:setVisibility(visible)
+    self.visible = visible
+end
+
+function catsing.objectfuncs:playanim()
+    --empty function for future use
+end
+
+function catsing.objectfuncs:setidle(anim)
+    self.idleanim = self.anims[anim]
 end
 
 return catsing
