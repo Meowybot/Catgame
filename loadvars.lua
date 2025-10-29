@@ -68,7 +68,7 @@ function catsing.level.lightnote(number, color)
     --TODO: add and call functions for actually lighting notes and adding anims and sound
 end
 
-function catsing.createobj(name, imagename, xpos, ypos, scalex, scaley, visible)
+function catsing.createobj(name, imagename, xpos, ypos, scalex, scaley, visible, animstable)
     local createdobj = {
         image = love.graphics.newImage(image) or love.graphics.newImage('assets/img/placeholder.png'),
         x = xpos or 0
@@ -76,7 +76,7 @@ function catsing.createobj(name, imagename, xpos, ypos, scalex, scaley, visible)
         scaleX = scalex or 1
         scaleY = scaley or 1
         visible = visible or true
-        anims = {}
+        anims = animstable
         idleanim = nil
         currentanim = nil
         singanim = nil
