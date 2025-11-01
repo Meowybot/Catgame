@@ -1,6 +1,6 @@
 function love.load()
     state = require("lib/stateswitcher")
-    catsing = require("loadvars")
+    catsing = require("newloadvars")
     state.switch("states/mainmenu")
     --switches to mm state
 end
