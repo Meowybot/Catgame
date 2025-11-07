@@ -109,4 +109,7 @@ function level.draw()
     if level.stats.missing then
         love.graphics.draw(level.data.vm)
     end
+    for _, note in pairs(level.notes.list) do
+        note:draw()
+    end
 end
