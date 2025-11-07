@@ -81,11 +81,12 @@ function level.onClick()
 end
 
 function level.load()
+    --a
 end
 
 function level.update(dt)
     for _, note in pairs(level.notes.list) do
         note:update(dt)
     end
-    
+    --a
 end
