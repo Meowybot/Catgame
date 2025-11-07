@@ -51,7 +51,7 @@ end
 
 function level.notes.funcs:update(dt)
     self.x = self.x - (dt * speed_per_second)
-    if not self.stop and self.x < 27 then
+    if not self.stop and self.x < -27 then
         self.stop = true
         level.stats.hp = level.stats.hp - 10
         if level.stats.hp < 1 then
