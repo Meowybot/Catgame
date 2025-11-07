@@ -1,1 +1,0 @@
---[["it will not have settings i changed my mind its too hard to code ;w;"]]--
