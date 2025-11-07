@@ -9,6 +9,17 @@ level.mdata.name = "Tutorial"
 level.mdata.id = "00"
 level.mdata.curstep = 0
 
+level.mdata.setup(name, id, bpm, spb)
+    level.mdata.bpm = bpm
+    level.mdata.spb = spb
+    level.mdata.bpsec = level.mdata.bpm / 60
+    level.mdata.secpb = 1 / level.mdata.bpsec
+    level.mdata.secps = level.mdata.secpb / level.mdata.spb
+    level.mdata.name = name
+    level.mdata.id = id
+    level.mdata.curstep = 0
+end
+
 local target_x = 0
 local initial_spawn_offset_x = 800
 local total_time_to_target = 4
