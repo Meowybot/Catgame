@@ -54,6 +54,7 @@ function level.notes.funcs:update(dt)
             state.switch("states/gameover.lua")
         end
         level.stats.miss = level.stats.miss + 1
+        level.stats.missing = true
     end
 end
 
@@ -64,6 +65,7 @@ function level.notes.funcs:onClick()
         if level.stats.hp > 100 then
             level.stats.hp = 100
         end
+        level.stats.missing = false
     end
 end
 
@@ -81,7 +83,10 @@ function level.onClick()
 end
 
 function level.load()
-    --a
+    level.data.m:play()
+    level.data.mv:play()
+    level.data.v:play()
+    level.data.vm:play()
 end
 
 function level.update(dt)
@@ -92,5 +97,12 @@ function level.update(dt)
         level.data.mv:setVolume(0)
     else
         level.data.mv:setVolume(100)
+    end
+end
+
+function level.draw()
+    love.graphics.draw(level.data.v)
+    if level.stats.missing then
+        love.graphics.draw(level.data.vm)
     end
 end
