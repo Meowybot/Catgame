@@ -1,8 +1,7 @@
 function love.load()
+    love.window.setTitle("CatSing! by CS!T")
     state = require("lib/stateswitcher")
-    catsing = require("newloadvars")
     state.switch("states/mainmenu")
-    --switches to mm state
 end
 
 function love.update(dt)
