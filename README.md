@@ -3,13 +3,13 @@ Wanted to see singing cats? This is the game. This game is in development. Pleas
 ## Credits
 Please note, the people working chose how they wanted to be credited. The names may or may not be fake.
 
-* [Ritsuru Norion]
-* [Nathan]
-* [yugiplay]
-* [Isaac G]
-* [Devon]
-* [and 2 more]
+* Ritsuru Norion - Coder
+* Nathan - Drawings, Music, Ideas
+* yugiplay - Drawings
+* Isaac G - Ideas
+* Devon - Music, Ideas
+* and 2 more - Unknown
 ## Libraries used:
 * [stateswitcher](https://github.com/nekromoff/love-state-switcher)
-* [anim8](https://github.com/kikito/anim8)
-* [I'll try some more]
+* [anim8 i will not use](https://github.com/kikito/anim8)
+* I'll try some more
