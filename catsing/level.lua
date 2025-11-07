@@ -9,14 +9,14 @@ level.mdata.name = "Tutorial"
 level.mdata.id = "00"
 level.mdata.curstep = 0
 
-level.mdata.setup(name, id, bpm, spb)
-    level.mdata.bpm = bpm
-    level.mdata.spb = spb
+function level.mdata.setup(name, id, bpm, spb)
+    level.mdata.bpm = bpm or 120
+    level.mdata.spb = spb or 4
     level.mdata.bpsec = level.mdata.bpm / 60
     level.mdata.secpb = 1 / level.mdata.bpsec
     level.mdata.secps = level.mdata.secpb / level.mdata.spb
-    level.mdata.name = name
-    level.mdata.id = id
+    level.mdata.name = name or "Tutorial"
+    level.mdata.id = id or "00"
     level.mdata.curstep = 0
 end
 
@@ -28,6 +28,7 @@ local speed_per_second = (initial_spawn_offset_x - target_x) / total_time_to_tar
 level.notes = {}
 level.notes.list = {}
 level.notes.funcs = {}
+level.notes.funcs.__index = level.notes.funcs
 
 function level.notes.add(number, step)
     local newnote = {}
