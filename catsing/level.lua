@@ -50,7 +50,7 @@ function level.notes.funcs:update(dt)
         self.stop = true
         level.stats.hp = level.stats.hp - 10
         if level.stats.hp < 1 then
-            state.switch(states/gameover.lua)
+            state.switch("states/gameover.lua")
         end
         level.stats.miss = level.stats.miss + 1
     end
