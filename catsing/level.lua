@@ -45,6 +45,10 @@ function level.notes.add(number, step)
     level.notes.list[number] = newnote
 end
 
+function level.notes.funcs:draw()
+    love.graphics.circle("fill", self.x, self.y, self.r)
+end
+
 function level.notes.funcs:update(dt)
     self.x = self.x - (dt * speed_per_second)
     if not self.stop and self.x < 27 then
