@@ -88,5 +88,9 @@ function level.update(dt)
     for _, note in pairs(level.notes.list) do
         note:update(dt)
     end
-    --a
+    if level.stats.missing then
+        level.data.mv:setVolume(0)
+    else
+        level.data.mv:setVolume(100)
+    end
 end
