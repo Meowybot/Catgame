@@ -100,7 +100,7 @@ function level.update(dt)
     if level.stats.missing then
         level.data.mv:setVolume(0)
     else
-        level.data.mv:setVolume(100)
+        level.data.mv:setVolume(1)
     end
 end
 
