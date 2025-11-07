@@ -11,7 +11,6 @@ level.mdata.curstep = 0
 level.stats = {}
 level.stats.miss = 0
 level.stats.hp = 100
-level.stats.score = 0
 
 function level.mdata.setup(name, id, bpm, spb)
     level.mdata.bpm = bpm or 120
@@ -40,19 +39,33 @@ function level.notes.add(number, step)
     local time_to_hit = step * level.mdata.secps
     newnote.x = initial_spawn_offset_x + (time_to_hit * speed_per_second)
     newnote.r = 25
-    newnote.missed = false
+    newnote.stop = false
     setmetatable(newnote, level.notes.funcs)
     level.notes.list[number] = newnote
 end
 
 function level.notes.funcs:update(dt)
     self.x = self.x - (dt * speed_per_second)
-    if not self.missed and self.x < 27 then
-        self.missed = true
+    if not self.stop and self.x < 27 then
+        self.stop = true
         level.stats.hp = level.stats.hp - 10
+        if level.stats.hp < 1 then
+            state.switch(states/gameover.lua)
+        end
         level.stats.miss = level.stats.miss + 1
     end
 end
+
+function level.notes.funcs:onClick()
+    if self.x < 27 and not self.stop then
+        self.stop = true
+        level.stats.hp = level.stats.hp + 10
+        if level.stats.hp > 100 then
+            level.stats.hp = 100
+        end
+    end
+end
+
 
 level.data = {}
 level.data.v = love.graphics.newVideo("video/tutorial.ogv")
@@ -61,4 +74,7 @@ level.data.m = love.audio.newSource("audio/tutorial.ogg", "stream")
 level.data.mv = love.audio.newSource("audio/tutorialv.ogg", "stream")
 
 function level.onClick()
+    for _, note in pairs(level.notes.list) do
+        note:onClick()
+    end
 end
