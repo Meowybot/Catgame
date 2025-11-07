@@ -11,6 +11,7 @@ level.mdata.curstep = 0
 level.stats = {}
 level.stats.miss = 0
 level.stats.hp = 100
+level.stats.missing = false
 
 function level.mdata.setup(name, id, bpm, spb)
     level.mdata.bpm = bpm or 120
@@ -77,4 +78,14 @@ function level.onClick()
     for _, note in pairs(level.notes.list) do
         note:onClick()
     end
+end
+
+function level.load()
+end
+
+function level.update(dt)
+    for _, note in pairs(level.notes.list) do
+        note:update(dt)
+    end
+    
 end
