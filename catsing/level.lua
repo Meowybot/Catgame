@@ -113,3 +113,5 @@ function level.draw()
         note:draw()
     end
 end
+
+return level
