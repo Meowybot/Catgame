@@ -6,9 +6,9 @@ function love.load()
     level.notes.add(2, 8)
     level.data.v = love.graphics.newVideo("video/placeholder.ogv")
     level.data.vm = love.graphics.newVideo("video/placeholder.ogv")
-    level.data.m = love.audio.newSource("audio/tutorial.ogg", "stream")
-    level.data.mv = love.audio.newSource("audio/tutorialv.ogg", "stream")
-    level.data.mm = love.audio.newSource("audio/tutorialm.ogg", "stream")
+    level.data.m = love.audio.newSource("audio/placeholder.ogg", "stream")
+    level.data.mv = love.audio.newSource("audio/placeholderv.ogg", "stream")
+    level.data.mm = love.audio.newSource("audio/placeholderm.ogg", "stream")
     level.load()
 end
 
