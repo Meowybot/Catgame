@@ -12,6 +12,9 @@ level.stats = {}
 level.stats.miss = 0
 level.stats.hp = 100
 level.stats.missing = false
+level.endstep = 100
+level.delta = 0
+level.fulldelta = 0
 
 function level.mdata.setup(name, id, bpm, spb)
     level.mdata.bpm = bpm or 120
@@ -57,7 +60,7 @@ function level.notes.funcs:update(dt)
         self.stop = true
         level.stats.hp = level.stats.hp - 10
         if level.stats.hp < 1 then
-            state.switch("states/gameover.lua")
+            state.switch("states/gameover")
         end
         level.stats.miss = level.stats.miss + 1
         level.stats.missing = true
@@ -99,6 +102,15 @@ function level.load()
 end
 
 function level.update(dt)
+    level.delta = level.delta + dt
+    while level.delta >= level.mdata.secps do
+        level.delta = level.delta - level.mdata.secps
+        level.mdata.curstep = level.mdata.curstep + 1
+        if level.mdata.curstep > level.endstep then
+            state.switch("states/mainmenu")
+        end
+    end
+    level.fulldelta = level.fulldelta + dt
     for _, note in pairs(level.notes.list) do
         note:update(dt)
     end
