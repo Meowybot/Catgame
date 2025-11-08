@@ -1,6 +1,7 @@
+state = require("lib/stateswitcher")
+
 function love.load()
     love.window.setTitle("CatSing! by CS!T")
-    state = require("lib/stateswitcher")
     state.switch("states/mainmenu")
 end
 
