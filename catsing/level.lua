@@ -80,8 +80,10 @@ end
 
 
 level.data = {}
-level.data.v = love.graphics.newVideo("video/placeholder.ogv")
-level.data.vm = love.graphics.newVideo("video/placeholder.ogv")
+level.data.vS = love.video.newVideoStream("video/placeholder.ogv")
+level.data.vmS = love.video.newVideoStream("video/placeholder.ogv")
+level.data.v = love.graphics.newVideo(level.data.vS)
+level.data.vm = love.graphics.newVideo(level.data.vmS)
 level.data.m = love.audio.newSource("audio/placeholder.ogg", "stream")
 level.data.mv = love.audio.newSource("audio/placeholderv.ogg", "stream")
 level.data.mm = love.audio.newSource("audio/placeholderm.ogg", "stream")
@@ -93,9 +95,9 @@ function level.onClick()
 end
 
 function level.load()
-    level.data.m:play()
-    level.data.mv:play()
-    level.data.mm:play()
+    love.audio.play(level.data.m, level.data.mm, level.data.mv)
+    level.data.vS:play()
+    level.data.vmS:play()
     level.data.v:play()
     level.data.vm:play()
     level.data.mm:setVolume(0)
