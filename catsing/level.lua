@@ -80,8 +80,8 @@ end
 
 
 level.data = {}
-level.data.v = love.graphics.newVideo("video/tutorial.ogv")
-level.data.vm = love.graphics.newVideo("video/tutorialm.ogv")
+level.data.v = love.graphics.newVideo("video/placeholder.ogv")
+level.data.vm = love.graphics.newVideo("video/placeholder.ogv")
 level.data.m = love.audio.newSource("audio/tutorial.ogg", "stream")
 level.data.mv = love.audio.newSource("audio/tutorialv.ogg", "stream")
 level.data.mm = love.audio.newSource("audio/tutorialm.ogg", "stream")
