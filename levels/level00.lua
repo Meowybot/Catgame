@@ -1,5 +1,6 @@
+level = require("catsing/level")
+
 function love.load()
-    level = require("catsing/level")
     level.mdata.setup("Tutorial", "00", 120, 4)
     level.notes.add(1, 4)
     level.notes.add(2, 8)
