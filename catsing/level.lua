@@ -46,7 +46,9 @@ function level.notes.add(number, step)
 end
 
 function level.notes.funcs:draw()
-    love.graphics.circle("fill", self.x, self.y, self.r)
+    if not self.stop then
+        love.graphics.circle("fill", self.x, self.y, self.r)
+    end
 end
 
 function level.notes.funcs:update(dt)
@@ -79,6 +81,7 @@ level.data.v = love.graphics.newVideo("video/tutorial.ogv")
 level.data.vm = love.graphics.newVideo("video/tutorialm.ogv")
 level.data.m = love.audio.newSource("audio/tutorial.ogg", "stream")
 level.data.mv = love.audio.newSource("audio/tutorialv.ogg", "stream")
+level.data.mm = love.audio.newSource("audio/tutorialm.ogg", "stream")
 
 function level.onClick()
     for _, note in pairs(level.notes.list) do
@@ -89,8 +92,10 @@ end
 function level.load()
     level.data.m:play()
     level.data.mv:play()
+    level.data.mm:play()
     level.data.v:play()
     level.data.vm:play()
+    level.data.mm:setVolume(0)
 end
 
 function level.update(dt)
@@ -99,8 +104,10 @@ function level.update(dt)
     end
     if level.stats.missing then
         level.data.mv:setVolume(0)
+        level.data.mm:setVolume(1)
     else
         level.data.mv:setVolume(1)
+        level.data.mm:setVolume(0)
     end
 end
 
