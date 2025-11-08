@@ -1,3 +1,2 @@
-here go the assets
-aquí van los archivos
-there are 3 assets type
+here go non level assets
+aqui van los activos que lo son de niveles
