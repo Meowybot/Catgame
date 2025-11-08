@@ -95,6 +95,13 @@ function level.onClick()
 end
 
 function level.load()
+    level.data.m:seek(0)
+    level.data.mv:seek(0)
+    level.data.mm:seek(0)
+    level.data.vS:seek(0)
+    level.data.vmS:seek(0)
+    level.data.v:seek(0)
+    level.data.vm:seek(0)
     love.audio.play(level.data.m, level.data.mm, level.data.mv)
     level.data.vS:play()
     level.data.vmS:play()
