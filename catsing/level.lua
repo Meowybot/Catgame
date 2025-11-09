@@ -110,42 +110,9 @@ function level.load(name, id, bpm, vid, vidm, mus, musm, musv, ...)
     level.data.vS:play()
     level.data.vmS:play()
     level.data.mm:setVolume(0)
-    --other functions
-    function level.update(dt)
-        level.delta = level.delta + dt
-        while level.delta >= level.mdata.secpb do
-            level.delta = level.delta - level.mdata.secpb
-            level.mdata.curstep = level.mdata.curstep + 1
-            if level.mdata.curstep > level.endstep then
-                state.switch("states/mainmenu")
-            end
-        end
-        level.fulldelta = level.fulldelta + dt
-        for _, note in pairs(level.notes.list) do
-            note:update(dt)
-        end
-        if level.stats.missing then
-            level.data.mv:setVolume(0)
-            level.data.mm:setVolume(1)
-        else
-            level.data.mv:setVolume(1)
-            level.data.mm:setVolume(0)
-        end
-    end
-    --other functions part 2
-    function level.draw()
-        love.graphics.draw(level.data.v)
-        if level.stats.missing then
-            love.graphics.draw(level.data.vm)
-        end
-        for _, note in pairs(level.notes.list) do
-            note:draw()
-        end
-    end
-    return level.update, level.draw
 end
 
 --EXAMPLE USE
---level.update, level.draw = level.load()
+--level.load()
 
 return level
