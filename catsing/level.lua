@@ -71,14 +71,15 @@ function level.notes.funcs:onClick()
 end
 
 
-level.data = {}
-level.data.vS = love.video.newVideoStream("video/placeholder.ogv")
-level.data.vmS = love.video.newVideoStream("video/placeholder.ogv")
-level.data.v = love.graphics.newVideo(level.data.vS)
-level.data.vm = love.graphics.newVideo(level.data.vmS)
-level.data.m = love.audio.newSource("audio/placeholder.ogg", "stream")
-level.data.mv = love.audio.newSource("audio/placeholderv.ogg", "stream")
-level.data.mm = love.audio.newSource("audio/placeholderm.ogg", "stream")
+function level.load_resources(vid_path, vids_path, audio_path, audiom_path, audiov_path)
+    level.data.vS = love.video.newVideoStream(vid_path or "video/placeholder.ogv")
+    level.data.vmS = love.video.newVideoStream(vids_path or "video/placeholder.ogv")
+    level.data.v = love.graphics.newVideo(level.data.vS)
+    level.data.vm = love.graphics.newVideo(level.data.vmS)
+    level.data.m = love.audio.newSource(audio_path or "audio/placeholder.ogg", "stream")
+    level.data.mv = love.audio.newSource(audiov_path or "audio/placeholderv.ogg", "stream")
+    level.data.mm = love.audio.newSource(audiom_path or "audio/placeholderm.ogg", "stream")
+end
 
 function level.onClick()
     for _, note in pairs(level.notes.list) do
@@ -94,11 +95,11 @@ function level.load()
     level.data.vmS:seek(0)
     level.data.v:seek(0)
     level.data.vm:seek(0)
-    love.audio.play(level.data.m, level.data.mm, level.data.mv)
+    love.audio.play(level.data.m) -- play with all sources
+    love.audio.play(level.data.mm)
+    love.audio.play(level.data.mv)
     level.data.vS:play()
     level.data.vmS:play()
-    level.data.v:play()
-    level.data.vm:play()
     level.data.mm:setVolume(0)
 end
 
