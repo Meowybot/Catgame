@@ -83,6 +83,7 @@ function level.load(name, id, bpm, vid, vidm, mus, musm, musv, ...)
     level.mdata.id = id or "00"
     level.mdata.curstep = 0
     --load video and audio
+    level.data = {}
     level.data.vS = love.video.newVideoStream(vid or "video/placeholder.ogv")
     level.data.vmS = love.video.newVideoStream(vidm or "video/placeholder.ogv")
     level.data.v = love.graphics.newVideo(level.data.vS)
