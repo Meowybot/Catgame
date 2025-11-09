@@ -42,7 +42,13 @@ function love.update(dt)
 end
 
 function love.draw()
-    level.draw()
+    love.graphics.draw(level.data.v)
+    if level.stats.missing then
+        love.graphics.draw(level.data.vm)
+    end
+    for _, note in pairs(level.notes.list) do
+        note:draw()
+    end
 end
 
 function love.mousepressed(x, y, button)
