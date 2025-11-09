@@ -153,6 +153,10 @@ function level.load(name, id, bpm, vid, vidm, mus, musm, musv, ...)
     level.data.mv = love.audio.newSource(audiov_path or "audio/placeholderv.ogg", "stream")
     level.data.mm = love.audio.newSource(audiom_path or "audio/placeholderm.ogg", "stream")
     --create notes
+    local nocrea = {...}
+    for i, beatnote in ipairs(nocrea) do
+        level.notes.add(i, beatnote)
+    end
     --original load
     --other functions
 end
