@@ -20,7 +20,7 @@ function love.load()
 end
 
 function love.update(dt)
-        level.delta = level.delta + dt
+    level.delta = level.delta + dt
     while level.delta >= level.mdata.secpb do
         level.delta = level.delta - level.mdata.secpb
         level.mdata.curstep = level.mdata.curstep + 1
