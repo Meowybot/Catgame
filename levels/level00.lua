@@ -1,23 +1,21 @@
 level = require("catsing/level")
 
-function love.load()
-    level.load(
-        "Tutorial",
-        "00",
-        120,
-        nil,
-        nil,
-        nil,
-        nil,
-        nil,
-        7,
-        9,
-        16,
-        17,
-        19,
-        27
-    )
-end
+level.load(
+    "Tutorial",
+    "00",
+    120,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    7,
+    9,
+    16,
+    17,
+    19,
+    27
+)
 
 function love.update(dt)
     level.delta = level.delta + dt

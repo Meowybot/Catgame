@@ -24,7 +24,7 @@ function level.notes.add(number, beat)
     newnote.y = 20
     newnote.spawnx = 20 * beat
     newnote.x = newnote.spawnx
-    newnote.r = 15
+    newnote.r = 10
     newnote.stop = false
     setmetatable(newnote, level.notes.funcs)
     level.notes.list[number] = newnote
@@ -39,7 +39,7 @@ end
 
 function level.notes.funcs:update(dt)
     self.x = self.spawnx - (level.mdata.curstep * 20)
-    if not self.stop and self.x < -27 then
+    if not self.stop and self.x < -19 then
         self.stop = true
         level.stats.hp = level.stats.hp - 10
         if level.stats.hp < 1 then
@@ -51,7 +51,7 @@ function level.notes.funcs:update(dt)
 end
 
 function level.notes.funcs:onClick()
-    if self.x < 27 and not self.stop then
+    if self.x < 19 and not self.stop then
         self.stop = true
         level.stats.hp = level.stats.hp + 10
         if level.stats.hp > 100 then
