@@ -144,4 +144,7 @@ function level.load(name, id, bpm, vid, vidm, mus, musm, musv, ...)
     return level.update, level.draw
 end
 
+--EXAMPLE USE
+--level.update, level.draw = level.load()
+
 return level
