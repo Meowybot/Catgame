@@ -1,10 +1,8 @@
 local level = {}
 level.mdata = {}
 level.mdata.bpm = 120
-level.mdata.spb = 4
 level.mdata.bpsec = level.mdata.bpm / 60
 level.mdata.secpb = 1 / level.mdata.bpsec
-level.mdata.secps = level.mdata.secpb / level.mdata.spb
 level.mdata.name = "Tutorial"
 level.mdata.id = "00"
 level.mdata.curstep = 0
@@ -16,33 +14,26 @@ level.endstep = 100
 level.delta = 0
 level.fulldelta = 0
 
-function level.mdata.setup(name, id, bpm, spb)
+function level.mdata.setup(name, id, bpm)
     level.mdata.bpm = bpm or 120
-    level.mdata.spb = spb or 4
     level.mdata.bpsec = level.mdata.bpm / 60
     level.mdata.secpb = 1 / level.mdata.bpsec
-    level.mdata.secps = level.mdata.secpb / level.mdata.spb
     level.mdata.name = name or "Tutorial"
     level.mdata.id = id or "00"
     level.mdata.curstep = 0
 end
-
-local target_x = 0
-local initial_spawn_offset_x = 800
-local total_time_to_target = 4
-local speed_per_second = (initial_spawn_offset_x - target_x) / total_time_to_target
 
 level.notes = {}
 level.notes.list = {}
 level.notes.funcs = {}
 level.notes.funcs.__index = level.notes.funcs
 
-function level.notes.add(number, step)
+function level.notes.add(number, beat)
     local newnote = {}
     newnote.y = 20
-    local time_to_hit = step * level.mdata.secps
-    newnote.x = initial_spawn_offset_x + (time_to_hit * speed_per_second)
-    newnote.r = 25
+    newnote.spawnx = 20 * beat
+    newnote.x = newnote.spawnx
+    newnote.r = 15
     newnote.stop = false
     setmetatable(newnote, level.notes.funcs)
     level.notes.list[number] = newnote
@@ -50,12 +41,13 @@ end
 
 function level.notes.funcs:draw()
     if not self.stop then
+        love.graphics.setColor(1, 1, 1)
         love.graphics.circle("fill", self.x, self.y, self.r)
     end
 end
 
 function level.notes.funcs:update(dt)
-    self.x = self.x - (dt * speed_per_second)
+    self.x = self.spawnx - (level.mdata.curstep * 20)
     if not self.stop and self.x < -27 then
         self.stop = true
         level.stats.hp = level.stats.hp - 10
