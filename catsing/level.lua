@@ -158,6 +158,19 @@ function level.load(name, id, bpm, vid, vidm, mus, musm, musv, ...)
         level.notes.add(i, beatnote)
     end
     --original load
+    level.data.m:seek(0)
+    level.data.mv:seek(0)
+    level.data.mm:seek(0)
+    level.data.vS:seek(0)
+    level.data.vmS:seek(0)
+    level.data.v:seek(0)
+    level.data.vm:seek(0)
+    love.audio.play(level.data.m)
+    love.audio.play(level.data.mm)
+    love.audio.play(level.data.mv)
+    level.data.vS:play()
+    level.data.vmS:play()
+    level.data.mm:setVolume(0)
     --other functions
 end
 
