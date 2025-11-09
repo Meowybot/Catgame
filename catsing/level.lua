@@ -137,6 +137,17 @@ end
 
 function level.load(name, id, bpm, vid, vidm, mus, musm, musv, ...)
     --merge most of the code here...
+    --setup
+    level.mdata.bpm = bpm or 120
+    level.mdata.bpsec = level.mdata.bpm / 60
+    level.mdata.secpb = 1 / level.mdata.bpsec
+    level.mdata.name = name or "Tutorial"
+    level.mdata.id = id or "00"
+    level.mdata.curstep = 0
+    --load video and audio
+    --create notes
+    --original load
+    --other functions
 end
 
 return level
