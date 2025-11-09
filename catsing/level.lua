@@ -145,6 +145,13 @@ function level.load(name, id, bpm, vid, vidm, mus, musm, musv, ...)
     level.mdata.id = id or "00"
     level.mdata.curstep = 0
     --load video and audio
+    level.data.vS = love.video.newVideoStream(vid_path or "video/placeholder.ogv")
+    level.data.vmS = love.video.newVideoStream(vids_path or "video/placeholder.ogv")
+    level.data.v = love.graphics.newVideo(level.data.vS)
+    level.data.vm = love.graphics.newVideo(level.data.vmS)
+    level.data.m = love.audio.newSource(audio_path or "audio/placeholder.ogg", "stream")
+    level.data.mv = love.audio.newSource(audiov_path or "audio/placeholderv.ogg", "stream")
+    level.data.mm = love.audio.newSource(audiom_path or "audio/placeholderm.ogg", "stream")
     --create notes
     --original load
     --other functions
