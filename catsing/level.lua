@@ -104,8 +104,8 @@ end
 
 function level.update(dt)
     level.delta = level.delta + dt
-    while level.delta >= level.mdata.secps do
-        level.delta = level.delta - level.mdata.secps
+    while level.delta >= level.mdata.secpb do
+        level.delta = level.delta - level.mdata.secpb
         level.mdata.curstep = level.mdata.curstep + 1
         if level.mdata.curstep > level.endstep then
             state.switch("states/mainmenu")
