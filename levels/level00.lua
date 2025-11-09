@@ -5,13 +5,15 @@ function love.load()
     level.notes.add(1, 4)
     level.notes.add(2, 8)
     level.notes.add(3, 50)
-    level.data.vS = love.video.newVideoStream("video/placeholder.ogv")
-    level.data.vmS = love.video.newVideoStream("video/placeholder.ogv")
-    level.data.v = love.graphics.newVideo(level.data.vS)
-    level.data.vm = love.graphics.newVideo(level.data.vmS)
-    level.data.m = love.audio.newSource("audio/placeholder.ogg", "stream")
-    level.data.mv = love.audio.newSource("audio/placeholderv.ogg", "stream")
-    level.data.mm = love.audio.newSource("audio/placeholderm.ogg", "stream")
+    
+    level.load_resources(
+        "video/placeholder.ogv",
+        "video/placeholder.ogv",
+        "audio/placeholder.ogg",
+        "audio/placeholderm.ogg",
+        "audio/placeholderv.ogg"
+    )
+
     level.load()
 end
 
