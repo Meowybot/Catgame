@@ -2,7 +2,20 @@ level = require("catsing/level")
 
 function love.load()
     level.update, level.draw = level.load(
-        --code
+        "Tutorial",
+        "00",
+        120,
+        nil,
+        nil,
+        nil,
+        nil,
+        nil,
+        7,
+        9,
+        16,
+        17,
+        19,
+        27
     )
 end
 
