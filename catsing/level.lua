@@ -194,7 +194,16 @@ function level.load(name, id, bpm, vid, vidm, mus, musm, musv, ...)
         end
     end
     --other functions part 2
-    return level.update
+    function level.draw()
+        love.graphics.draw(level.data.v)
+        if level.stats.missing then
+            love.graphics.draw(level.data.vm)
+        end
+        for _, note in pairs(level.notes.list) do
+            note:draw()
+        end
+    end
+    return level.update, level.draw
 end
 
 return level
