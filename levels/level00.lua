@@ -1,7 +1,9 @@
 level = require("catsing/level")
 
 function love.load()
-    level.update, level.draw = level.load()
+    level.update, level.draw = level.load(
+        --code
+)
 end
 
 function love.update(dt)
