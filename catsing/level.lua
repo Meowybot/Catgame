@@ -14,15 +14,6 @@ level.endstep = 400
 level.delta = 0
 level.fulldelta = 0
 
-function level.mdata.setup(name, id, bpm)
-    level.mdata.bpm = bpm or 120
-    level.mdata.bpsec = level.mdata.bpm / 60
-    level.mdata.secpb = 1 / level.mdata.bpsec
-    level.mdata.name = name or "Tutorial"
-    level.mdata.id = id or "00"
-    level.mdata.curstep = 0
-end
-
 level.notes = {}
 level.notes.list = {}
 level.notes.funcs = {}
@@ -70,69 +61,16 @@ function level.notes.funcs:onClick()
     end
 end
 
-
-function level.load_resources(vid_path, vids_path, audio_path, audiom_path, audiov_path)
-    level.data.vS = love.video.newVideoStream(vid_path or "video/placeholder.ogv")
-    level.data.vmS = love.video.newVideoStream(vids_path or "video/placeholder.ogv")
-    level.data.v = love.graphics.newVideo(level.data.vS)
-    level.data.vm = love.graphics.newVideo(level.data.vmS)
-    level.data.m = love.audio.newSource(audio_path or "audio/placeholder.ogg", "stream")
-    level.data.mv = love.audio.newSource(audiov_path or "audio/placeholderv.ogg", "stream")
-    level.data.mm = love.audio.newSource(audiom_path or "audio/placeholderm.ogg", "stream")
-end
-
 function level.onClick()
     for _, note in pairs(level.notes.list) do
         note:onClick()
     end
 end
 
-function level.load()
-    level.data.m:seek(0)
-    level.data.mv:seek(0)
-    level.data.mm:seek(0)
-    level.data.vS:seek(0)
-    level.data.vmS:seek(0)
-    level.data.v:seek(0)
-    level.data.vm:seek(0)
-    love.audio.play(level.data.m) -- play with all sources
-    love.audio.play(level.data.mm)
-    love.audio.play(level.data.mv)
-    level.data.vS:play()
-    level.data.vmS:play()
-    level.data.mm:setVolume(0)
-end
-
 function level.update(dt)
-    level.delta = level.delta + dt
-    while level.delta >= level.mdata.secpb do
-        level.delta = level.delta - level.mdata.secpb
-        level.mdata.curstep = level.mdata.curstep + 1
-        if level.mdata.curstep > level.endstep then
-            state.switch("states/mainmenu")
-        end
-    end
-    level.fulldelta = level.fulldelta + dt
-    for _, note in pairs(level.notes.list) do
-        note:update(dt)
-    end
-    if level.stats.missing then
-        level.data.mv:setVolume(0)
-        level.data.mm:setVolume(1)
-    else
-        level.data.mv:setVolume(1)
-        level.data.mm:setVolume(0)
-    end
 end
 
 function level.draw()
-    love.graphics.draw(level.data.v)
-    if level.stats.missing then
-        love.graphics.draw(level.data.vm)
-    end
-    for _, note in pairs(level.notes.list) do
-        note:draw()
-    end
 end
 
 function level.load(name, id, bpm, vid, vidm, mus, musm, musv, ...)
