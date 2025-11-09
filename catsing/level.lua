@@ -135,4 +135,8 @@ function level.draw()
     end
 end
 
+function level.load(name, id, bpm, vid, vidm, mus, musm, musv, ...)
+    --merge most of the code here...
+end
+
 return level
