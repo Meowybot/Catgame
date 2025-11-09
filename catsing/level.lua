@@ -10,7 +10,7 @@ level.stats = {}
 level.stats.miss = 0
 level.stats.hp = 100
 level.stats.missing = false
-level.endstep = 100
+level.endstep = 400
 level.delta = 0
 level.fulldelta = 0
 
