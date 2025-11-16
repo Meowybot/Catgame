@@ -1,3 +1,8 @@
+if not package.loaded[level] then
+else
+    package.loaded[level]=false
+end
+
 level = require("catsing/level")
 
 level.load(
