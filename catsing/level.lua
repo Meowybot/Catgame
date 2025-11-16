@@ -73,7 +73,7 @@ end
 function level.draw()
 end
 
-function level.load(name, id, bpm, vid, vidm, mus, musm, musv, ...)
+function level.load(name, id, bpm, vid, vidm, mus, musm, musv, estep, ...)
     --merge most of the code here...
     --setup
     level.mdata.bpm = bpm or 120
@@ -82,6 +82,13 @@ function level.load(name, id, bpm, vid, vidm, mus, musm, musv, ...)
     level.mdata.name = name or "Tutorial"
     level.mdata.id = id or "00"
     level.mdata.curstep = 0
+    level.stats = {}
+    level.stats.miss = 0
+    level.stats.hp = 100
+    level.stats.missing = false
+    level.endstep = estep
+    level.delta = 0
+    level.fulldelta = 0
     --load video and audio
     level.data = {}
     level.data.vS = love.video.newVideoStream(vid or "video/placeholder.ogv")
