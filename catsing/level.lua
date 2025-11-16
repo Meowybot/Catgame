@@ -86,7 +86,7 @@ function level.load(name, id, bpm, vid, vidm, mus, musm, musv, estep, ...)
     level.stats.miss = 0
     level.stats.hp = 100
     level.stats.missing = false
-    level.endstep = estep
+    level.endstep = estep or 400
     level.delta = 0
     level.fulldelta = 0
     --load video and audio
