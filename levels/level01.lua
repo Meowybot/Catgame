@@ -14,7 +14,7 @@ level.load(
     nil,
     nil,
     nil,
-    300
+    300,
     19,
     21,
     22,
