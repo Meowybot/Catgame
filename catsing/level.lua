@@ -90,6 +90,13 @@ function level.update(dt)
 end
 
 function level.draw()
+    love.graphics.draw(level.data.v)
+    if level.stats.missing then
+        love.graphics.draw(level.data.vm)
+    end
+    for _, note in pairs(level.notes.list) do
+        note:draw()
+    end
 end
 
 function level.load(name, id, bpm, vid, vidm, mus, musm, musv, estep, ...)
