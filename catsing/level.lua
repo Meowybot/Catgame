@@ -119,6 +119,12 @@ function level.load(name, id, bpm, vid, vidm, mus, musm, musv, estep, ...)
     level.data.mm:setVolume(0)
 end
 
+function level.unload(statoswi)
+    love.draw = function() end
+    love.update = function(dt) end
+    state.switch(statoswi)
+end
+
 --EXAMPLE USE
 --level.load()
 
