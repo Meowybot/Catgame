@@ -148,10 +148,9 @@ end
 function level.unload(statoswi)
     love.draw = function() end
     love.update = function(dt) end
+    love.mousepressed = function(x, y, button) end
+    love.keypressed = function(key) end
     state.switch(statoswi)
 end
-
---EXAMPLE USE
---level.load()
 
 return level
