@@ -1,64 +1,42 @@
-if not package.loaded[level] then
+--this is the base level where all level files come from, fork it to make new levels
+
+if not package.loaded["catsing/level"] then
 else
-    package.loaded[level]=false
+    package.loaded["catsing/level"]=false --delete reference to level to make sure
 end
 
 level = require("catsing/level")
 
-level.load(
-    "Programmin",
-    "01",
-    180,
+level.load( --this makes all the level data
+    "Programmin", --name
+    "01", --id
+    180, --bpm
+    nil, --wait until i add it
     nil,
     nil,
     nil,
     nil,
-    nil,
-    300,
-    19,
+    300, --endstep
+    19, --from here, all values are note beats
     21,
     22,
     23
 )
 
-function love.update(dt)
-    level.delta = level.delta + dt
-    while level.delta >= level.mdata.secpb do
-        level.delta = level.delta - level.mdata.secpb
-        level.mdata.curstep = level.mdata.curstep + 1
-        if level.mdata.curstep > level.endstep then
-            state.switch("states/mainmenu")
-        end
-    end
-    level.fulldelta = level.fulldelta + dt
-    for _, note in pairs(level.notes.list) do
-        note:update(dt)
-    end
-    if level.stats.missing then
-        level.data.mv:setVolume(0)
-        level.data.mm:setVolume(1)
-    else
-        level.data.mv:setVolume(1)
-        level.data.mm:setVolume(0)
-    end
+function love.update(dt) --update level state
+    level.update(dt) --compressed to level.update
 end
 
 function love.draw()
-    love.graphics.draw(level.data.v)
-    if level.stats.missing then
-        love.graphics.draw(level.data.vm)
-    end
-    for _, note in pairs(level.notes.list) do
-        note:draw()
-    end
+    level.draw() --draws video and notes
 end
 
 function love.mousepressed(x, y, button)
-    level.onClick()
+    level.onClick() --when mouse is pressed, check for note clicks
 end
 
 function love.keypressed(key)
     if key == "space" then
-        level.onClick()
+        level.onClick() --also check for note clicks on spacebar
     end
 end

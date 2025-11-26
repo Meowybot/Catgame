@@ -1,3 +1,5 @@
+-- outdated level file, use levels/level01.lua as base for new levels
+
 level = require("catsing/level")
 
 level.load(

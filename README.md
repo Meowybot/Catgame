@@ -8,7 +8,8 @@ The people who made the game
 * yugiplay - Drawings
 * Isaac G - Ideas
 * Devon - Music, Ideas
-* and 2 more - Unknown
+* Omaromitas30 - Unkowne
+* and 1 more - Unknown
 ### Love2D:
 #### Libraries:
 * [stateswitcher](https://github.com/nekromoff/love-state-switcher)

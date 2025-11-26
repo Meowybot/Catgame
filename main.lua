@@ -1,12 +1,11 @@
-state = require("lib/stateswitcher")
+state = require("lib/stateswitcher") --load for switching state
 
 function love.load()
-    love.window.setTitle("CatSing! by CS!T")
-    state.switch("levels/level00")
+    state.switch("levels/level01") --this level will be loaded first for testing purposes
 end
 
-function love.update(dt)
+function love.update(dt) --no update, that will be handled in other states
 end
 
-function love.draw()
+function love.draw() --same reason as update
 end

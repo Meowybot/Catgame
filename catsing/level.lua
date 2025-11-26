@@ -1,33 +1,33 @@
-local level = {}
-level.mdata = {}
+local level = {} --level table
+level.mdata = {} --metadata
 level.mdata.bpm = 120
 level.mdata.bpsec = level.mdata.bpm / 60
 level.mdata.secpb = 1 / level.mdata.bpsec
 level.mdata.name = "Tutorial"
 level.mdata.id = "00"
 level.mdata.curstep = 0
-level.stats = {}
+level.stats = {} --player stats
 level.stats.miss = 0
 level.stats.hp = 100
 level.stats.missing = false
-level.endstep = 400
+level.endstep = 400 --other variables for level
 level.delta = 0
 level.fulldelta = 0
 
-level.notes = {}
-level.notes.list = {}
-level.notes.funcs = {}
-level.notes.funcs.__index = level.notes.funcs
+level.notes = {} --notes table
+level.notes.list = {} --list of notes
+level.notes.funcs = {} --note functions
+level.notes.funcs.__index = level.notes.funcs --funni index
 
-function level.notes.add(number, beat)
-    local newnote = {}
-    newnote.y = 20
-    newnote.spawnx = 20 * beat
-    newnote.x = newnote.spawnx
-    newnote.r = 10
-    newnote.stop = false
-    setmetatable(newnote, level.notes.funcs)
-    level.notes.list[number] = newnote
+function level.notes.add(number, beat) --guess what it does
+    local newnote = {} --local note table
+    newnote.y = 20 --fixed var
+    newnote.spawnx = 20 * beat --fixed var
+    newnote.x = newnote.spawnx --dynamic var
+    newnote.r = 10 --fixed var
+    newnote.stop = false --detects if the note has been hit or missed
+    setmetatable(newnote, level.notes.funcs) --sets the metatable
+    level.notes.list[number] = newnote --adds the note to the list
 end
 
 function level.notes.funcs:draw()
@@ -43,10 +43,10 @@ function level.notes.funcs:update(dt)
         self.stop = true
         level.stats.hp = level.stats.hp - 10
         if level.stats.hp < 1 then
-            state.switch("states/gameover")
+            level.unload("states/gameover;" .. level.mdata.id)
         end
         level.stats.miss = level.stats.miss + 1
-        level.stats.missing = true
+        level.stats.missing = true --it basically checks for misses and also moves note
     end
 end
 
@@ -61,7 +61,7 @@ function level.notes.funcs:onClick()
     end
 end
 
-function level.onClick()
+function level.onClick() --called when the player clicks
     for _, note in pairs(level.notes.list) do
         note:onClick()
     end
@@ -73,7 +73,7 @@ function level.update(dt)
         level.delta = level.delta - level.mdata.secpb
         level.mdata.curstep = level.mdata.curstep + 1
         if level.mdata.curstep > level.endstep then
-            state.switch("states/mainmenu")
+            level.unload("states/mainmenu") --check for endstep
         end
     end
     level.fulldelta = level.fulldelta + dt
@@ -153,4 +153,4 @@ function level.unload(statoswi)
     state.switch(statoswi)
 end
 
-return level
+return level --return level

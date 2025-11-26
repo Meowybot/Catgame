@@ -1,9 +1,10 @@
---[[
-TODO: Add the main menu sprites and code
+--thisis the main menu state, it will have the following:
+--title
+--play button
+--credits button
+--exit button
 
-lo haré a las 2 horas despues de terminar el juego (chiste)
-]]--
-
-if level then
+if package.loaded["catsing/level"] then
     level = nil
+    package.loaded["catsing/level"] = false --delete reference to level code
 end
